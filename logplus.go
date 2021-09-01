@@ -8,11 +8,11 @@ import (
 	"github.com/fatih/color"
 )
 
-var infoString = "%v/%v/%v %v:%v:%v [INFO] > %v"
-var debugString = "%v/%v/%v %v:%v:%v [DEBUG] > %v"
-var warnString = "%v/%v/%v %v:%v:%v [WARNING] > %v"
-var errorString = "%v/%v/%v %v:%v:%v [ERROR] > %v"
-var fatalString = "%v/%v/%v %v:%v:%v [FATAL] > %v"
+var infoString = "%v/%v/%v %v:%v:%v [INFO] > %v\n"
+var debugString = "%v/%v/%v %v:%v:%v [DEBUG] > %v\n"
+var warnString = "%v/%v/%v %v:%v:%v [WARNING] > %v\n"
+var errorString = "%v/%v/%v %v:%v:%v [ERROR] > %v\n"
+var fatalString = "%v/%v/%v %v:%v:%v [FATAL] > %v\n"
 
 func checkMonth(m time.Month) string {
 	sm := m.String()
