@@ -1,1 +1,1 @@
-#logplus: The "log" Go pkg, but, better
+# LogPlus: The "log" Go pkg, but, better
