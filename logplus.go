@@ -14,7 +14,7 @@ var debugString = "%v/%v/%v %v:%v:%v [DEBUG] > %v"
 var warnString = "%v/%v/%v %v:%v:%v [WARNING] > %v"
 var errorString = "%v/%v/%v %v:%v:%v [ERROR] > %v"
 var fatalString = "%v/%v/%v %v:%v:%v [FATAL] > %v"
-var infoFString = "%v/%v/%v %v:%v:%v [INFO] > %v"
+var infoFString = "%v/%v/%v %v:%v:%v [INFO] > "
 var debugFString = "%v/%v/%v %v:%v:%v [DEBUG] > "
 var warnFString = "%v/%v/%v %v:%v:%v [WARNING] > "
 var errorFString = "%v/%v/%v %v:%v:%v [ERROR] > "
@@ -156,7 +156,7 @@ func Infof(format string, a ...interface{}) {
 	mi := checkDigits(int(ct.Minute()))
 	s := checkDigits(int(ct.Second()))
 
-	info.Printf(infoFString + fmt.Sprintf(format, a...), y, mo, d, h, mi, s)
+	info.Printf(infoFString + fmt.Sprintf(format, a...) + "\n", y, mo, d, h, mi, s)
 }
 
 func Debugf(format string, a ...interface{}) {
@@ -169,7 +169,7 @@ func Debugf(format string, a ...interface{}) {
 	h := checkDigits(int(ct.Day()))
 	mi := checkDigits(int(ct.Minute()))
 	s := checkDigits(int(ct.Second()))
-	debug.Printf(debugFString + fmt.Sprintf(format, a...), y, mo, d, h, mi, s)
+	debug.Printf(debugFString + fmt.Sprintf(format, a...) + "\n", y, mo, d, h, mi, s)
 }
 
 func Warnf(format string, a ...interface{}) {
@@ -182,7 +182,7 @@ func Warnf(format string, a ...interface{}) {
 	h := checkDigits(int(ct.Day()))
 	mi := checkDigits(int(ct.Minute()))
 	s := checkDigits(int(ct.Second()))
-	warn.Printf(warnFString + fmt.Sprintf(format, a...), y, mo, d, h, mi, s)	
+	warn.Printf(warnFString + fmt.Sprintf(format, a...) + "\n", y, mo, d, h, mi, s)	
 }
 
 func Errorf(format string, a ...interface{}) {
@@ -195,7 +195,7 @@ func Errorf(format string, a ...interface{}) {
 	h := checkDigits(int(ct.Day()))
 	mi := checkDigits(int(ct.Minute()))
 	s := checkDigits(int(ct.Second()))
-	err.Printf(errorFString + fmt.Sprintf(format, a...), y, mo, d, h, mi, s)
+	err.Printf(errorFString + fmt.Sprintf(format, a...) + "\n", y, mo, d, h, mi, s)
 }
 
 func Fatalf(format string, a ...interface{}) {
@@ -208,5 +208,5 @@ func Fatalf(format string, a ...interface{}) {
 	h := checkDigits(int(ct.Day()))
 	mi := checkDigits(int(ct.Minute()))
 	s := checkDigits(int(ct.Second()))
-	fatal.Printf(fatalFString + fmt.Sprintf(format, a...), y, mo, d, h, mi, s)
+	fatal.Printf(fatalFString + fmt.Sprintf(format, a...) + "\n", y, mo, d, h, mi, s)
 }
