@@ -1,6 +1,7 @@
 package logplus
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 	"time"
@@ -13,6 +14,11 @@ var debugString = "%v/%v/%v %v:%v:%v [DEBUG] > %v"
 var warnString = "%v/%v/%v %v:%v:%v [WARNING] > %v"
 var errorString = "%v/%v/%v %v:%v:%v [ERROR] > %v"
 var fatalString = "%v/%v/%v %v:%v:%v [FATAL] > %v"
+var infoFString = "%v/%v/%v %v:%v:%v [INFO] > %v"
+var debugFString = "%v/%v/%v %v:%v:%v [DEBUG] > "
+var warnFString = "%v/%v/%v %v:%v:%v [WARNING] > "
+var errorFString = "%v/%v/%v %v:%v:%v [ERROR] > "
+var fatalFString = "%v/%v/%v %v:%v:%v [FATAL] > "
 
 func checkMonth(m time.Month) string {
 	sm := m.String()
@@ -137,4 +143,70 @@ func Fatal(text ...string) {
 	mi := checkDigits(int(ct.Minute()))
 	s := checkDigits(int(ct.Second()))
 	fatal.Printf(fatalString, y, mo, d, h, mi, s, fText)
+}
+
+func Infof(format string, a ...interface{}) {
+	info := color.New(color.FgHiGreen)
+
+	ct := time.Now()
+	y := ct.Year()
+	mo := checkMonth(ct.Month())
+	d := checkDigits(int(ct.Day()))
+	h := checkDigits(int(ct.Day()))
+	mi := checkDigits(int(ct.Minute()))
+	s := checkDigits(int(ct.Second()))
+
+	info.Printf(infoFString + fmt.Sprintf(format, a...), y, mo, d, h, mi, s)
+}
+
+func Debugf(format string, a ...interface{}) {
+	debug := color.New(color.FgHiCyan)
+
+	ct := time.Now()
+	y := ct.Year()
+	mo := checkMonth(ct.Month())
+	d := checkDigits(int(ct.Day()))
+	h := checkDigits(int(ct.Day()))
+	mi := checkDigits(int(ct.Minute()))
+	s := checkDigits(int(ct.Second()))
+	debug.Printf(debugFString + fmt.Sprintf(format, a...), y, mo, d, h, mi, s)
+}
+
+func Warnf(format string, a ...interface{}) {
+	warn := color.New(color.FgHiYellow)
+
+	ct := time.Now()
+	y := ct.Year()
+	mo := checkMonth(ct.Month())
+	d := checkDigits(int(ct.Day()))
+	h := checkDigits(int(ct.Day()))
+	mi := checkDigits(int(ct.Minute()))
+	s := checkDigits(int(ct.Second()))
+	warn.Printf(warnFString + fmt.Sprintf(format, a...), y, mo, d, h, mi, s)	
+}
+
+func Errorf(format string, a ...interface{}) {
+	err := color.New(color.FgHiRed)
+
+	ct := time.Now()
+	y := ct.Year()
+	mo := checkMonth(ct.Month())
+	d := checkDigits(int(ct.Day()))
+	h := checkDigits(int(ct.Day()))
+	mi := checkDigits(int(ct.Minute()))
+	s := checkDigits(int(ct.Second()))
+	err.Printf(errorFString + fmt.Sprintf(format, a...), y, mo, d, h, mi, s)
+}
+
+func Fatalf(format string, a ...interface{}) {
+	fatal := color.New(color.FgRed)
+
+	ct := time.Now()
+	y := ct.Year()
+	mo := checkMonth(ct.Month())
+	d := checkDigits(int(ct.Day()))
+	h := checkDigits(int(ct.Day()))
+	mi := checkDigits(int(ct.Minute()))
+	s := checkDigits(int(ct.Second()))
+	fatal.Printf(fatalFString + fmt.Sprintf(format, a...), y, mo, d, h, mi, s)
 }
